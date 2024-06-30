@@ -68,5 +68,8 @@ map("n", "<leader>z", "<cmd> SessionManager <CR>", { desc = "Session manager" })
 map("n", "<leader>cv", "<cmd> VimtexView <CR>", { desc = "Tex: View" })
 map("n", "<leader>cl", "<cmd> VimtexCompile <CR>", { desc = "Tex: Compile" })
 
+-- Toggle auto completion
+map("n", "<leader>tc", "<cmd> NvimCmpToggle <CR>", { desc = "Toggle nvim-cmp" })
+
 -- AI
 -- map({ "n", "v" }, "<leader>ww", ":Gen<CR>", { desc = "LLM Prompt" })
