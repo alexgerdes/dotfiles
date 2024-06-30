@@ -13,6 +13,12 @@ map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- Restore CTRL-i for jumping forward
 map("n", "<C-i>", "<C-i>", { noremap = true })
 
+-- Fix Alt accent keys in MacOS
+map("i", "<M-e>", "<C-k>'", { noremap = true })
+map("i", "<M-`>", "<C-k>`", { noremap = true })
+map("i", "<M-i>", "<C-k>^", { noremap = true })
+map("i", "<M-u>", "<C-k>:", { noremap = true })
+
 -- LSP actions
 map("n", "<leader>lh", vim.lsp.buf.hover, { desc = "Show information for under cursor" }) -- show documentation for what is under cursor
 map("n", "<leader>lD", vim.lsp.buf.definition, { desc = "Go to definition" })
