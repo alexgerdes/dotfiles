@@ -1,4 +1,13 @@
 return {
+  -- In order to modify the `lspconfig` configuration:
+  {
+    "neovim/nvim-lspconfig",
+     config = function()
+        require("nvchad.configs.lspconfig").defaults()
+        require "configs.lspconfig"
+     end,
+  },
+
   -- Code formatting
   {
     "stevearc/conform.nvim",
@@ -45,7 +54,9 @@ return {
         "lua-language-server",
         "stylua",
         "prettier",
-        -- "pyre",
+        "pyright",
+        "black",
+        "isort",
         "haskell-language-server",
       },
       automatic_instalation = true,

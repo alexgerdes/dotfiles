@@ -3,7 +3,6 @@ require "nvchad.options"
 local opt = vim.opt
 
 -- Start plugins
-require("lspconfig").hls.setup {}
 require("gitsigns").setup()
 
 -- Basic settings
@@ -21,9 +20,9 @@ opt.guicursor = "i:ver50-iCursor-blinkwait300-blinkon200-blinkoff150"
 opt.shell = "/bin/zsh"
 opt.cursorline = true
 opt.encoding = "utf-8"
-opt.hlsearch = true    -- Highlight search matches
-opt.incsearch = true   -- Starts search before enter
-opt.autoread = true    -- Reads files again if they have been changed outside of vim
+opt.hlsearch = true -- Highlight search matches
+opt.incsearch = true -- Starts search before enter
+opt.autoread = true -- Reads files again if they have been changed outside of vim
 
 -- Override cursor color in insert mode
 vim.cmd [[highlight iCursor guifg=orange guibg=orange]]

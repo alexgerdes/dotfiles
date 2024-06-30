@@ -4,12 +4,13 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     haskell = { "flosk" },
+    python = { "isort", "black" },
   },
 
   formatters = {
     flosk = {
       command = "floskell",
-    }
+    },
   },
 
   -- format_on_save = {
