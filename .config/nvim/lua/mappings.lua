@@ -56,17 +56,17 @@ map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff this" })
 map("n", "<leader>gD", function()
   gitsigns.diffthis "~"
 end, { desc = "Diff this" })
-map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "" })
+map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "Gitsigns toggle deleted" })
 
 -- Toggle theme
-map("n", "<leader>tt", base46.toggle_theme, { desc = "toggle theme" })
+map("n", "<leader>tt", base46.toggle_theme, { desc = "Toggle theme" })
 
 -- Session manager
 map("n", "<leader>z", "<cmd> SessionManager <CR>", { desc = "Session manager" })
 
 -- TeX stuff
-map("n", "<leader>cv", "<cmd> VimtexView <CR>", { desc = "Tex: View" })
-map("n", "<leader>cl", "<cmd> VimtexCompile <CR>", { desc = "Tex: Compile" })
+map("n", "<leader>vv", "<cmd> VimtexView <CR>", { desc = "Tex: View" })
+map("n", "<leader>vc", "<cmd> VimtexCompile <CR>", { desc = "Tex: Compile" })
 
 -- Toggle auto completion
 map("n", "<leader>tc", "<cmd> NvimCmpToggle <CR>", { desc = "Toggle nvim-cmp" })
