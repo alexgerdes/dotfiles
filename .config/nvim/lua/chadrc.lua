@@ -62,7 +62,7 @@ M.ui = {
     },
   },
   theme_toggle = { "ashes", "flexoki-light" },
-  theme = "flexoki-light", -- default theme
+  theme = "ashes", -- default theme
   transparency = false,
 
   cmp = {

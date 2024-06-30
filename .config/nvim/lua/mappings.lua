@@ -72,4 +72,4 @@ map("n", "<leader>vc", "<cmd> VimtexCompile <CR>", { desc = "Tex: Compile" })
 map("n", "<leader>tc", "<cmd> NvimCmpToggle <CR>", { desc = "Toggle nvim-cmp" })
 
 -- AI
--- map({ "n", "v" }, "<leader>ww", ":Gen<CR>", { desc = "LLM Prompt" })
+map({ "n", "v" }, "<leader>ww", ":Gen<CR>", { desc = "LLM Prompt" })

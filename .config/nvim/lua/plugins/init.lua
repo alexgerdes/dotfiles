@@ -2,10 +2,10 @@ return {
   -- In order to modify the `lspconfig` configuration:
   {
     "neovim/nvim-lspconfig",
-     config = function()
-        require("nvchad.configs.lspconfig").defaults()
-        require "configs.lspconfig"
-     end,
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
   },
 
   -- Code formatting
@@ -124,16 +124,18 @@ return {
     },
   },
 
-  -- -- AI - LLM
-  -- {
-  --   "David-Kunz/gen.nvim",
-  --   lazy = false,
-  --   opts = {
-  --     model = "mistral:instruct",
-  --     -- show_model = true,
-  --   },
-  --   keys = {
-  --     { "<leader>ww", "<cmd>Gen<CR>", desc = "LLM Prompt" },
-  --   },
-  -- },
+  -- AI - LLM
+  {
+    "David-Kunz/gen.nvim",
+    lazy = false,
+    opts = {
+      model = "mistral:instruct",
+      display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
+      show_prompt = true, -- Shows the prompt submitted to Ollama.
+      show_model = true,
+    },
+    keys = {
+      { "<leader>ww", "<cmd>Gen<CR>", desc = "LLM Prompt" },
+    },
+  },
 }
