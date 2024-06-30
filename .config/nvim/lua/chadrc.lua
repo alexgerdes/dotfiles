@@ -134,17 +134,17 @@ M.ui = {
   cheatsheet = { theme = "grid" }, -- simple/grid
 
   lsp = { signature = true },
+}
 
-  term = {
-    sizes = { sp = 0.2, vsp = 0.4 },
-    float = {
-      relative = "editor",
-      row = 0.125,
-      col = 0.125,
-      width = 0.7,
-      height = 0.5,
-      border = "single",
-    },
+M.term = {
+  sizes = { sp = 0.2, vsp = 0.4 },
+  float = {
+    relative = "editor",
+    row = 0.125,
+    col = 0.125,
+    width = 0.7,
+    height = 0.5,
+    border = "single",
   },
 }
 
