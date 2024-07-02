@@ -51,13 +51,16 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- Lua
         "lua-language-server",
         "stylua",
         "prettier",
+        -- Haskell
+        "haskell-language-server",
+        -- Python
         "pyright",
         "black",
         "isort",
-        "haskell-language-server",
       },
       automatic_instalation = true,
     },
