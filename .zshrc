@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ENABLE_CORRECTION="true"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  plugins=(git fzf macos docker brew python)
+  plugins=(git fzf macos docker python)
   PYTHON_VENV_NAME=".venv"
   FPATH="$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions:${FPATH}"
 else
