@@ -4,6 +4,7 @@ local opt = vim.opt
 
 -- Start plugins
 require("gitsigns").setup()
+require("telescope").load_extension "ui-select"
 
 -- Basic settings
 opt.tabstop = 2
