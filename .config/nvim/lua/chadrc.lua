@@ -144,7 +144,7 @@ M.term = {
     col = 0.125,
     width = 0.7,
     height = 0.5,
-    border = "single",
+    border = "rounded",
   },
 }
 
