@@ -2,10 +2,6 @@ require "nvchad.options"
 
 local opt = vim.opt
 
--- Start plugins
-require("gitsigns").setup()
-require("telescope").load_extension "ui-select"
-
 -- Basic settings
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -42,5 +38,9 @@ local function toggle_autocomplete()
     vim.notify "Autocomplete enabled"
   end
 end
-
 vim.api.nvim_create_user_command("NvimCmpToggle", toggle_autocomplete, {})
+
+-- Start plugins
+require("gitsigns").setup()
+require("telescope").load_extension "ui-select"
+require("autodark").setup()

@@ -33,6 +33,9 @@ local colors = {
   folder_bg = "#6F6E69",
 }
 
+local dark = "ashes"
+local light = "flexoki-light"
+
 M.ui = {
   ------------------------------- base46 -------------------------------------
   -- hl = highlights
@@ -61,8 +64,12 @@ M.ui = {
       },
     },
   },
-  theme_toggle = { "ashes", "flexoki-light" },
-  theme = "ashes", -- default theme
+
+  dark_theme = dark,
+  light_theme = light,
+  theme_toggle = { dark, light },
+  theme = dark, -- default theme
+
   transparency = false,
 
   cmp = {
