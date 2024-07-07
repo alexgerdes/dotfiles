@@ -1,5 +1,8 @@
+# Homebrew prefix
+export HOMEBREW_PREFIX=/opt/homebrew
+
 # Macos specific paths
-export PATH=$PATH:/opt/homebrew/bin  # Brew
+export PATH=$PATH:$HOMEBREW_PREFIX/bin  # Brew
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
 # Application aliases
