@@ -141,12 +141,20 @@ return {
       { "<leader>ww", "<cmd>Gen<CR>", desc = "LLM Prompt" },
     },
   },
+
   -- Nice notifications
   {
     "rcarriga/nvim-notify",
   },
+
   -- Use telescope for selections
   {
     "nvim-telescope/telescope-ui-select.nvim",
+  },
+
+  -- Thin column line
+  {
+    "xiyaowong/virtcolumn.nvim",
+    lazy = false,
   },
 }
