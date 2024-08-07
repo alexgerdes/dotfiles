@@ -24,9 +24,11 @@ alias ideastest='ssh -A -t alex@up.science.uu.nl ssh science-vs106'
 alias l='gls -lah --color'
 alias ls='gls --color=auto'
 alias ll='gls -lah --color=auto'
+alias lz='eza -la --git --time-style relative --icons=auto --no-permissions --octal-permissions --group'
 
 # Dircolors
- eval `gdircolors ~/.dircolors`
+eval `gdircolors ~/.dircolors`
+export EZA_COLORS="uu=0:gu=0:sn=0:da=0:oc=0":$LS_COLORS
 
 # Python environment
 export PYENV_ROOT="$HOME/.pyenv"

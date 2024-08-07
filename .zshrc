@@ -22,6 +22,7 @@ export EDITOR=nvim
 export LANG=en_US.UTF-8
 export BAT_THEME="ansi"
 export COPYFILE_DISABLE=true  # Prevent hiden files to show up in tarballs
+export TZ=Europe/Stockholm
 
 # Path
 export PATH=$PATH:~/.ghcup/bin    # GHCup
@@ -57,6 +58,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias md='mkdir -p'
 alias :q='exit'
+alias sc='source ~/.zshrc'
 
 # Local (OS specific) configuration
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
