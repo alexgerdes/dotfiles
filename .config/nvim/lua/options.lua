@@ -24,6 +24,9 @@ opt.autoread = true -- Reads files again if they have been changed outside of vi
 -- Override cursor color in insert mode
 vim.cmd [[highlight iCursor guifg=orange guibg=orange]]
 
+-- Set color for column line
+vim.cmd [[highlight ColorColumn ctermbg=7 guibg=Visual]]
+
 vim.filetype.add { extension = { docker = "dockerfile" } }
 
 -- Toggle auto completion
