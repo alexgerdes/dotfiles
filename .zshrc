@@ -3,6 +3,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Path
+export PATH=$PATH:~/.ghcup/bin       # GHCup
+export PATH=$PATH:~/.local/bin       # Cabal/Haskell
+export PATH=$PATH:~/.cargo/bin       # Rust
+export PATH=$PATH:/opt/homebrew/bin  # Homebrew
+export PATH=$PATH:/usr/local/bin     # Put own binaries here
+
 # Oh-my-zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -10,7 +17,7 @@ ENABLE_CORRECTION="true"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   plugins=(git fzf macos docker python)
   PYTHON_VENV_NAME=".venv"
-  FPATH="$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 else
   plugins=(git fzf)
 fi
@@ -23,12 +30,6 @@ export LANG=en_US.UTF-8
 export BAT_THEME="ansi"
 export COPYFILE_DISABLE=true  # Prevent hiden files to show up in tarballs
 export TZ=Europe/Stockholm
-
-# Path
-export PATH=$PATH:~/.ghcup/bin    # GHCup
-export PATH=$PATH:~/.local/bin    # Cabal/Haskell
-export PATH=$PATH:~/.cargo/bin    # Rust
-export PATH=$PATH:/usr/local/bin  # Put own binaries here
 
 # FZF key bindings and fuzzy completion
 eval "$(fzf --zsh)"
