@@ -11,7 +11,7 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 opt.copyindent = true
-opt.colorcolumn = "80"
+-- opt.colorcolumn = "80"
 opt.wrap = false
 opt.guicursor = "i:ver50-iCursor-blinkwait300-blinkon200-blinkoff150"
 opt.shell = "/bin/zsh"
@@ -25,7 +25,7 @@ opt.autoread = true -- Reads files again if they have been changed outside of vi
 vim.cmd [[highlight iCursor guifg=orange guibg=orange]]
 
 -- Set color for column line
-vim.cmd [[highlight ColorColumn ctermbg=7 guibg=Visual]]
+vim.cmd [[highlight ColorColumn ctermbg=7 guibg=LineNr]]
 
 vim.filetype.add { extension = { docker = "dockerfile" } }
 
@@ -46,4 +46,3 @@ vim.api.nvim_create_user_command("NvimCmpToggle", toggle_autocomplete, {})
 -- Start plugins
 require("gitsigns").setup()
 require("telescope").load_extension "ui-select"
-require("autodark").setup()
