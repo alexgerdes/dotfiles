@@ -11,7 +11,7 @@ return {
   -- Code formatting
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -154,7 +154,23 @@ return {
 
   -- Thin column line
   {
-    "xiyaowong/virtcolumn.nvim",
+    "lukas-reineke/virt-column.nvim",
+    opts = {
+      char = "│",
+      virtcolumn = "80",
+    },
     lazy = false,
   },
+
+  -- Select surrounding stuff
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  }
 }
