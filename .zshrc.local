@@ -11,10 +11,25 @@ alias bibdesk='open -a "BibDesk"'
 alias preview='open -a "Preview"'
 alias elmedia='open -a "Elmedia Player"'
 
-# Radio logger aliases
+# Radio aliases
 alias woutfrank='radiologger.sh veronica "Wout en Frank" `date +%F` 16 18'
 alias bonanza='radiologger.sh veronica "De Bonanza" `date +%F` 14 15'
-alias onenightstenders='radiologger.sh veronica "One Night stenders" `date -v-fri +%F` 22 23'
+alias ekdom='radiologger.sh veronica "Ekdom in de morgen" `date +%F` 6 8'
+alias pup40='radiologger.sh veronica "PUP 40" `date -v-fri +%F` 18 21'
+
+alias nrk_klassisk='mpv https://lyd.nrk.no/nrk_radio_klassisk_aac_h'
+alias veronica='mpv https://playerservices.streamtheworld.com/api/livestream-redirect/VERONICAAAC.aac'
+alias ndr2='mpv https://www.ndr.de/resources/metadaten/audio/aac/ndr2.m3u'
+alias antenne_bayern='mpv https://stream.antenne.de/antenne/stream/aacp'
+alias radio2='mpv https://icecast.omroep.nl/radio2-bb-aac'
+alias radio4='mpv https://icecast.omroep.nl/radio4-bb-aac'
+alias lxclassics='mpv http://www.lxclassics.com/playlist/LXClassics.m3u'
+alias kxclassics='mpv http://stream.kxclassikx.nl/'
+alias pinguinclassics='mpv https://streams.pinguinradio.com/PinguinClassics192.mp3'
+alias pinguinpluche='mpv https://samcloud.spacial.com/api/listen\?sid\=98569\&m\=sc\&rid\=174384'
+alias sr_p3='mpv https://sverigesradio.se/topsy/direkt/164-hi-aac.m3u'
+alias sr_p4='mpv https://sverigesradio.se/topsy/direkt/206-hi-aac.m3u'
+alias treby='mpv https://streaming.943.se/treby878'
 
 # Servers
 alias ideas='ssh -A -t alex@up.science.uu.nl ssh science-vs105'
