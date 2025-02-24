@@ -36,7 +36,8 @@ alias ideas='ssh -A -t alex@up.science.uu.nl ssh science-vs105'
 alias ideastest='ssh -A -t alex@up.science.uu.nl ssh science-vs106'
 
 # Override ls with gls for dircolors
-alias l='gls -lah --color'
+alias l='eza -la --git --time-style relative --icons=auto --no-permissions --octal-permissions --group'
+# alias l='gls -lah --color'
 alias ls='gls --color=auto'
 alias ll='gls -lah --color=auto'
 alias lz='eza -la --git --time-style relative --icons=auto --no-permissions --octal-permissions --group'
