@@ -80,3 +80,6 @@ for i = 1, 9, 1 do
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
   end)
 end
+
+-- Mappings to commands, that I use a lot
+map("n", "<localleader>s", "<cmd> w <CR>", { desc = "Save file"} )
