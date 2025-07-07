@@ -2,7 +2,7 @@
 export HOMEBREW_PREFIX=/opt/homebrew
 
 # Macos specific paths
-export PATH=$PATH:$HOMEBREW_PREFIX/bin  # Brew
+export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH  # Brew
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
 # Application aliases
@@ -12,10 +12,10 @@ alias preview='open -a "Preview"'
 alias elmedia='open -a "Elmedia Player"'
 
 # Radio aliases
-alias woutfrank='radiologger.sh veronica "Wout en Frank" `date +%F` 16 18'
 alias bonanza='radiologger.sh veronica "De Bonanza" `date +%F` 14 15'
 alias ekdom='radiologger.sh veronica "Ekdom in de morgen" `date +%F` 6 8'
 alias pup40='radiologger.sh veronica "PUP 40" `date -v-fri +%F` 18 21'
+alias stenders_ekdom='radiologger.sh veronica "Stenders en Ekdom" `date -v-fri +%F` 14 15'
 
 alias nrk_klassisk='mpv https://lyd.nrk.no/nrk_radio_klassisk_aac_h'
 alias veronica='mpv https://playerservices.streamtheworld.com/api/livestream-redirect/VERONICAAAC.aac'
@@ -26,14 +26,15 @@ alias radio4='mpv https://icecast.omroep.nl/radio4-bb-aac'
 alias lxclassics='mpv http://www.lxclassics.com/playlist/LXClassics.m3u'
 alias kxclassics='mpv http://stream.kxclassikx.nl/'
 alias pinguinclassics='mpv https://streams.pinguinradio.com/PinguinClassics192.mp3'
-alias pinguinpluche='mpv https://samcloud.spacial.com/api/listen\?sid\=98569\&m\=sc\&rid\=174384'
 alias sr_p3='mpv https://sverigesradio.se/topsy/direkt/164-hi-aac.m3u'
 alias sr_p4='mpv https://sverigesradio.se/topsy/direkt/206-hi-aac.m3u'
 alias treby='mpv https://streaming.943.se/treby878'
+alias rtl1025='mpv http://masterv3.shoutcast.com:8000/rtl-1025'
 
 # Servers
 alias ideas='ssh -A -t alex@up.science.uu.nl ssh science-vs105'
 alias ideastest='ssh -A -t alex@up.science.uu.nl ssh science-vs106'
+alias wotan='ssh wotan.klarit.se'
 
 # Override ls with gls for dircolors
 alias l='eza -la --git --time-style relative --icons=auto --no-permissions --octal-permissions --group'

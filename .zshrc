@@ -41,7 +41,7 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target
+  --walker-skip .git,node_modules,target,Library
   --preview 'tree -C {}'"
 
 # Some functions
