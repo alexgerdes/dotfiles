@@ -127,20 +127,21 @@ return {
     },
   },
 
-  -- AI - LLM
-  {
-    "David-Kunz/gen.nvim",
-    lazy = false,
-    opts = {
-      model = "mistral:instruct",
-      display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
-      show_prompt = true, -- Shows the prompt submitted to Ollama.
-      show_model = true,
-    },
-    keys = {
-      { "<leader>ww", "<cmd>Gen<CR>", desc = "LLM Prompt" },
-    },
-  },
+  -- -- AI - LLM
+  -- {
+  --   "David-Kunz/gen.nvim",
+  --   lazy = false,
+  --   opts = {
+  --     -- model = "mistral:instruct",
+  --     model = "qwen2.5-coder", -- "llama3.1:8b",
+  --     display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
+  --     show_prompt = true, -- Shows the prompt submitted to Ollama.
+  --     show_model = true,
+  --   },
+  --   keys = {
+  --     { "<leader>ww", "<cmd>Gen<CR>", desc = "LLM Prompt" },
+  --   },
+  -- },
 
   -- Nice notifications
   {
@@ -168,9 +169,43 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
-  }
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  -- Soft wrap at given column
+  {
+    "rickhowe/wrapwidth",
+    lazy = false,
+  },
+  -- Notifcations and commands in a neat window
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+  },
+  -- Interact with LLMs
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  -- },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
 }

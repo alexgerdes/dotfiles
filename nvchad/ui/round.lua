@@ -21,7 +21,8 @@ M.mode = function()
   local current_mode = "%#St_" .. modes[m][2] .. "Mode# " .. modes[m][1]
   local mode_sep1 = "%#St_" .. modes[m][2] .. "ModeSep#" .. sep_r
   local sep = "%#St_" .. modes[m][2] .. "ModeSepOut#" .. sep_l
-  return sep .. current_mode .. mode_sep1 .. "%#ST_EmptySpace#" .. sep_r
+  local trim = "%#ST_trim# "
+  return trim .. sep .. current_mode .. mode_sep1 -- .. "%#ST_EmptySpace#" .. sep_r
 end
 
 M.file = function()
@@ -47,8 +48,12 @@ end
 
 M.cwd = function()
   local icon = "%#St_cwd_icon#" .. "󰉋"
-  local name = vim.loop.cwd()
-  name = "%#St_cwd_icon#" .. " " .. (name:match "([^/\\]+)[/\\]*$" or name)
+  local cwd = vim.loop.cwd() or ""
+  local name = cwd:match "([^/\\]+)[/\\]*$" or cwd
+  if string.len(name) > 16 then
+    name = string.sub(name, 1, 15) .. "…"
+  end
+  name = "%#St_cwd_icon#" .. " " .. name
   return (vim.o.columns > 85 and ("%#St_cwd_sep#" .. sep_l .. icon .. name)) or ""
 end
 
@@ -57,11 +62,12 @@ M.cursor = function()
   local icon = "%#St_pos_icon# "
   local pos = "%#St_pos_text# %l:%c (%p%%)"
   local sep_out = "%#St_pos_sep_out#" .. sep_r
-  return sep .. icon .. pos .. sep_out
+  local trim = "%#ST_trim# "
+  return sep .. icon .. pos .. sep_out .. trim
 end
 
 M["%="] = "%="
 
 return function()
-  return utils.generate("default", M)
+  return utils.generate("round", M)
 end

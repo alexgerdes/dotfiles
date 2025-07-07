@@ -12,14 +12,15 @@ opt.autoindent = true
 opt.smartindent = true
 opt.copyindent = true
 -- opt.colorcolumn = "80"
-opt.wrap = false
 opt.guicursor = "i:ver50-iCursor-blinkwait300-blinkon200-blinkoff150"
 opt.shell = "/bin/zsh"
 opt.cursorline = true
 opt.encoding = "utf-8"
-opt.hlsearch = true -- Highlight search matches
+opt.hlsearch = true  -- Highlight search matches
 opt.incsearch = true -- Starts search before enter
-opt.autoread = true -- Reads files again if they have been changed outside of vim
+opt.autoread = true  -- Reads files again if they have been changed outside of vim
+opt.linebreak = true
+opt.wrap = true
 
 -- Override cursor color in insert mode
 vim.cmd [[highlight iCursor guifg=orange guibg=orange]]
@@ -46,3 +47,14 @@ vim.api.nvim_create_user_command("NvimCmpToggle", toggle_autocomplete, {})
 -- Start plugins
 require("gitsigns").setup()
 require("telescope").load_extension "ui-select"
+require("codecompanion").setup {
+  adapters = {
+    openai = function()
+      return require("codecompanion.adapters").extend("openai", {
+        env = {
+          -- api_key = cmd:op read op://personal/openai/api key --no-newline",
+        },
+      })
+    end,
+  },
+}

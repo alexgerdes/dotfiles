@@ -8,7 +8,7 @@ local light_grey = generate_color(colors.light_grey, 8)
 
 local M = {
   StatusLine = { bg = statusline_bg },
-  St_gitIcons = { fg = light_grey, bg = statusline_bg, bold = true },
+  St_gitIcons = { fg = colors.light_grey, bg = statusline_bg, bold = true },
   St_Lsp = { fg = colors.light_grey, bg = statusline_bg },
   St_LspMsg = { fg = colors.green, bg = statusline_bg },
   St_EmptySpace = { fg = colors.grey, bg = colors.lightbg },
@@ -21,6 +21,7 @@ local M = {
   St_pos_icon = { fg = colors.white, bg = colors.grey },
   St_pos_text = { fg = colors.white, bg = colors.grey },
   St_pos_sep_out = { fg = colors.grey, bg = statusline_bg },
+  St_trim = { fg = colors.light_grey, bg = colors.black },
 
   -- lsp highlights
   St_lspError = { fg = colors.red, bg = statusline_bg },
@@ -31,7 +32,7 @@ local M = {
 
 local function genModes_hl(modename, col)
   M["St_" .. modename .. "Mode"] = { fg = colors.black, bg = colors[col], bold = true }
-  M["St_" .. modename .. "ModeSep"] = { fg = colors[col], bg = colors.grey }
+  M["St_" .. modename .. "ModeSep"] = { fg = colors[col], bg = colors.lightbg }
   M["St_" .. modename .. "ModeSepOut"] = { fg = colors[col], bg = statusline_bg }
 end
 

@@ -7,7 +7,7 @@ M.base46 = {
   integrations = {},
   changed_themes = {},
   transparency = false,
-  theme_toggle = { "ashes", "sehsa" },
+  theme_toggle = { "sehsa", "sehsa" },
 }
 
 M.ui = {
@@ -21,10 +21,10 @@ M.ui = {
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
-    theme = "round", -- default/vscode/vscode_colored/minimal
+    theme = "default", -- default/vscode/vscode_colored/minimal/round
     -- default/round/block/arrow separators work only for default statusline theme
-    -- round and block will work for minimal theme only
-    separator_style = "round",
+    -- round and block will work for minimal and round theme only
+    separator_style = "default",
     order = { "mode", "file", "git", "%=", "diagnostics", "lsp", "cwd", "cursor" },
   },
 
@@ -80,19 +80,28 @@ M.term = {
   },
 }
 
-M.nvimtree = {
-  git = {
-    enable = true,
-  },
-
-  renderer = {
-    highlight_git = true,
-    icons = {
-      show = {
-        git = true,
-      },
-    },
-  },
-}
+-- M.nvimtree = {
+--   git = {
+--     enable = true,
+--   },
+--
+--   renderer = {
+--     highlight_git = true,
+--     icons = {
+--       show = {
+--         git = true,
+--       },
+--     },
+--   },
+--
+--   view = {
+--     adaptive_size = true,
+--     width = {
+--       padding = 1,
+--       max = 20,
+--     },
+--     side = "right",
+--   },
+-- }
 
 return M

@@ -23,6 +23,9 @@ require("lazy").setup({
     import = "nvchad.plugins",
     config = function()
       require "options"
+      -- Override nvim-tree settings
+      local nvim_tree_options = require "nvchad.configs.nvimtree"
+      nvim_tree_options.filters.custom = { "^\\.git$", "DS_Store" }
     end,
   },
 
