@@ -22,6 +22,4 @@ return {
   { import = "astrocommunity.recipes.vscode" },
   -- CoPilot
   { import = "astrocommunity.completion.copilot-lua-cmp" },
-  -- Statusline
-  { import = "astrocommunity.bars-and-lines.lualine-nvim" },
 }
