@@ -76,7 +76,7 @@ return {
         lualine_y = {},
         lualine_z = { "location" },
       },
-      extensions = { "toggleterm", "trouble" },
+      extensions = { "toggleterm", "trouble", "neo-tree" },
     }
   end,
 }
