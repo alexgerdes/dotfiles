@@ -77,6 +77,12 @@ local function get_highlight_fg(group)
   return hl.fg and string.format("#%06x", hl.fg) or nil
 end
 
+local get_spellang = function()
+  if vim.opt.spell:get() ~= true then return "" end
+  local lang = table.concat(vim.opt_local.spelllang:get(), "|")
+  return lang == "" and "[--]" or "[" .. lang .. "]"
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -135,6 +141,7 @@ return {
             update_in_insert = true,
           },
           { clients_lsp },
+          { get_spellang },
         },
         lualine_y = {
           {

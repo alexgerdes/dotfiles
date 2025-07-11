@@ -9,6 +9,8 @@ return {
           -- Switch between buffers.
           ["<M-]>"] = { ":bn<CR>" },
           ["<M-[>"] = { ":bp<CR>" },
+          -- Smart files picker
+          ["<leader><space>"] = { ":lua Snacks.picker.smart()<CR>", desc = "Smart find files" },
         },
         i = {
           -- Fix Alt accent keys in MacOS
