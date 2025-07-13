@@ -72,6 +72,14 @@ local function get_root_dir()
   return vim.fn.fnamemodify(cwd, ":t")
 end
 
+local function truncate_dir(dir, max_length)
+  if #dir <= max_length then
+    return dir
+  else
+    return string.sub(dir, 0, max_length) .. "…"
+  end
+end
+
 local function get_highlight_fg(group)
   local hl = vim.api.nvim_get_hl(0, { name = group })
   return hl.fg and string.format("#%06x", hl.fg) or nil
@@ -115,35 +123,10 @@ return {
       },
       sections = {
         lualine_a = {
-          { get_root_dir },
+          { mode_letter, padding = { left = 2, right = 2 } },
         },
         lualine_b = {
-          {
-            "branch",
-            icon = "",
-            padding = { left = 2, right = 1 },
-            on_click = function() open_git_diff() end,
-          },
-        },
-        lualine_c = {
-          {
-            "diff",
-            symbols = { added = " ", modified = " ", removed = " " },
-            colored = false,
-            on_click = function() open_git_diff() end,
-            color = function() return { fg = dfg } end,
-          },
-        },
-        lualine_x = {
-          {
-            "diagnostics",
-            symbols = { error = " ", warn = " ", info = " ", hint = " " },
-            update_in_insert = true,
-          },
-          { clients_lsp },
-          { get_spellang },
-        },
-        lualine_y = {
+          { function() return truncate_dir(get_root_dir(), 12) end },
           {
             "filetype",
             icon_only = true,
@@ -157,10 +140,38 @@ return {
             path = 0, -- 0: Just the filename, 1: Relative path, 2: Absolute path
             symbols = { modified = " ", readonly = " ", unnamed = "[No Name]" },
           },
-          { "%l:%c (%p%%)" },
+        },
+        lualine_c = {
+          {
+            "branch",
+            icon = "",
+            padding = { left = 2, right = 1 },
+            on_click = function() open_git_diff() end,
+          },
+          {
+            "diff",
+            symbols = { added = " ", modified = " ", removed = " " },
+            colored = false,
+            color = function() return { fg = dfg } end,
+            on_click = function() open_git_diff() end,
+          },
+        },
+        lualine_x = {
+          {
+            "diagnostics",
+            symbols = { error = " ", warn = " ", info = " ", hint = " " },
+            update_in_insert = true,
+          },
+        },
+        lualine_y = {
+          {
+            clients_lsp,
+            on_click = function() vim.cmd "LspInfo" end,
+          },
+          { get_spellang },
         },
         lualine_z = {
-          { mode_letter, padding = { left = 2, right = 2 } },
+          { "%l:%c (%p%%)" },
         },
       },
       inactive_sections = {
