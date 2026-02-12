@@ -33,8 +33,14 @@ return {
   {
     "f-person/auto-dark-mode.nvim",
     opts = {
-      set_dark_mode = function() vim.cmd [[colorscheme catppuccin-mocha]] end,
-      set_light_mode = function() vim.cmd [[colorscheme flexoki-dawn]] end,
+      set_dark_mode = function()
+        vim.cmd [[colorscheme catppuccin-mocha]]
+        vim.api.nvim_set_option_value("background", "dark", {})
+      end,
+      set_light_mode = function()
+        vim.cmd [[colorscheme flexoki]]
+        vim.api.nvim_set_option_value("background", "light", {})
+      end,
       update_interval = 1000,
       fallback = "dark",
     },
@@ -73,9 +79,36 @@ return {
     },
   },
 
-  -- Flexoki colorscheme
+  -- Conform for formatting
   {
-    "nuvic/flexoki-nvim",
-    name = "flexoki",
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        tex = { "tex-fmt" },
+        haskell = { "floskell" },
+      },
+      formatters = {
+        floskell = {
+          command = "floskell",
+        },
+      },
+    },
+  },
+
+  {
+    "cpplain/flexoki.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      -- Override specific highlight groups
+    --   highlight_override = function(colors)
+    --     return {
+    --       StatusLine = { fg = colors.tx, bg = colors.bg },
+    --       -- Comment = { fg = "#9966cc", italic = true }, -- Direct hex
+    --       -- Function = { fg = colors.yellow, bold = true }, -- Semantic reference
+    --       -- ["@keyword"] = { fg = "#ff6b9d" }, -- Direct hex
+    --     }
+    --   end,
+    },
   },
 }

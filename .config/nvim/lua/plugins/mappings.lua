@@ -18,6 +18,8 @@ return {
           ["<M-`>"] = { "<C-k>`" },
           ["<M-i>"] = { "<C-k>^" },
           ["<M-u>"] = { "<C-k>:" },
+          -- Save using Ctrl-S
+          ["<C-s>"] = { "<C-o>:w<CR>", desc = "Save file" },
         },
       },
     },

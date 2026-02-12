@@ -10,6 +10,7 @@ alias skim='open -a "Skim"'
 alias bibdesk='open -a "BibDesk"'
 alias preview='open -a "Preview"'
 alias elmedia='open -a "Elmedia Player"'
+alias lg='lazygit'
 
 # Radio aliases
 alias bonanza='radiologger.sh veronica "De Bonanza" `date +%F` 14 15'
@@ -51,3 +52,13 @@ export EZA_COLORS="uu=0:gu=0:sn=0:da=0:oc=0":$LS_COLORS
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Yazi file manager
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
