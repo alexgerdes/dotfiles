@@ -1,3 +1,4 @@
 .config/nvim/lazy-lock.json
 nvchad/scripts/.DS_Store
 /.config/nvim/lua/plugins/tags
+.DS_Store

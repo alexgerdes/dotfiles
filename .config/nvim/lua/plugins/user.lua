@@ -101,14 +101,20 @@ return {
     priority = 1000,
     opts = {
       -- Override specific highlight groups
-    --   highlight_override = function(colors)
-    --     return {
-    --       StatusLine = { fg = colors.tx, bg = colors.bg },
-    --       -- Comment = { fg = "#9966cc", italic = true }, -- Direct hex
-    --       -- Function = { fg = colors.yellow, bold = true }, -- Semantic reference
-    --       -- ["@keyword"] = { fg = "#ff6b9d" }, -- Direct hex
-    --     }
-    --   end,
+      highlight_override = function(colors)
+        return {
+          NeoTreeTabActive = { bg = colors.bg, fg = colors.tx, bold = true },
+          NeoTreeTabInactive = { bg = colors.bg2 }, -- , fg = C.overlay0 },
+          NeoTreeTabSeparatorActive = { fg = colors.bg, bg = colors.bg },
+          NeoTreeTabSeparatorInactive = { fg = colors.bg2, bg = colors.bg2 },
+          StatusLine = { fg = colors.tx, bg = colors.bg },
+        }
+      end,
     },
   },
+
+  -- {
+  --   "cpplain/flexoki-lualine.nvim",
+  --   dependencies = { "cpplain/flexoki.nvim" },
+  -- },
 }
