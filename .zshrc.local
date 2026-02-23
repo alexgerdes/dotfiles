@@ -4,6 +4,7 @@ export HOMEBREW_PREFIX=/opt/homebrew
 # Macos specific paths
 export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH  # Brew
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+export PATH=$PATH:~/.cabal/bin
 
 # Application aliases
 alias skim='open -a "Skim"'

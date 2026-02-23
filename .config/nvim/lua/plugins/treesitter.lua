@@ -23,7 +23,6 @@ return {
       "erlang",
       "elixir",
       "ocaml",
-      "swift",
       -- Low level
       "c",
       "llvm",
