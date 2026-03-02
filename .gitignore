@@ -2,3 +2,5 @@
 nvchad/scripts/.DS_Store
 /.config/nvim/lua/plugins/tags
 .DS_Store
+/.config/yazi/plugins
+/.config/yazi/flavors

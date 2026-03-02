@@ -1,0 +1,34 @@
+[[plugin.deps]]
+use = "llanosrocas/githead"
+rev = "317d09f"
+hash = "41dc37a724b2afd21da4f1ea6c1182d8"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "1962818"
+hash = "6fa6a05a81c98dd000fbca3cca6e9682"
+
+[[plugin.deps]]
+use = "llanosrocas/yaziline"
+rev = "d9cc2cb"
+hash = "b6073aadf2f9a1d5389a6d389f33f69c"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:vcs-files"
+rev = "1962818"
+hash = "f6e6a829c6dc6c900a75bebe422a5c33"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "1962818"
+hash = "26db011a778f261d730d4f5f8bf24b3f"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "575a48f"
+hash = "8eabb4e88096f10905a6df62cfaadbf4"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "349d27f"
+hash = "c6b710b2aa0fb9c6c7f1ec4db6146104"
