@@ -27,4 +27,6 @@ return {
   { import = "astrocommunity.editing-support.copilotchat-nvim" },
   -- Conform formatting
   { import = "astrocommunity.editing-support.conform-nvim" },
+  -- Yazi file explorer
+  { import = "astrocommunity.file-explorer.yazi-nvim" },
 }
