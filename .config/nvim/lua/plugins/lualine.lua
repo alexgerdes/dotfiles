@@ -91,10 +91,9 @@ local get_spellang = function()
   return lang == "" and "[--]" or "[" .. lang .. "]"
 end
 
-
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons",  "cpplain/flexoki.nvim" },
+  dependencies = { "nvim-tree/nvim-web-devicons", "cpplain/flexoki.nvim" },
 
   event = "VeryLazy",
   specs = {
@@ -113,7 +112,11 @@ return {
         if client.name == "copilot" then return " " end
       end
 
-      if #clients > 0 then return " " else return "" end
+      if #clients > 0 then
+        return " "
+      else
+        return ""
+      end
     end
 
     local dfg = get_highlight_fg "Comment" or "#888888"
@@ -172,10 +175,11 @@ return {
             on_click = function() vim.cmd "LspInfo" end,
           },
           { get_spellang },
-          -- { "lsp_status", on_click = function() vim.cmd "LspInfo" end },
+          { "lsp_status", on_click = function() vim.cmd "LspInfo" end },
         },
         lualine_z = {
-          { "%l:%c (%p%%)" },
+          { "%l:%c" },
+          { "%p%%" },
         },
       },
       inactive_sections = {
