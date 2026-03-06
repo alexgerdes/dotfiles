@@ -1,3 +1,6 @@
+[mgr]
+ratio = [1, 2, 4]
+
 [[plugin.prepend_fetchers]]
 id  = "git"
 url = "*"
