@@ -63,3 +63,5 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Zoxide, a better cd 
+eval "$(zoxide init zsh)"
