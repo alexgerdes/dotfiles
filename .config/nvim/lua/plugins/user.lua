@@ -32,7 +32,7 @@ return {
   -- Auto dark mode
   {
     "f-person/auto-dark-mode.nvim",
-    cond = function() return vim.loop.os_uname().sysname == "Darwin" end,
+    cond = function() return vim.loop.os_uname().sysname == "Darwin" and not vim.g.vscode end,
     opts = {
       set_dark_mode = function()
         vim.cmd [[colorscheme catppuccin-mocha]]
