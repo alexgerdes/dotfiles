@@ -26,3 +26,5 @@ vim.g.autoformat = false
 -- Recognize docker files
 vim.filetype.add { extension = { docker = "dockerfile" } }
 
+-- Use MiniTrailSpace to remove trailing spaces
+require('mini.trailspace').setup()

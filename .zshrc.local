@@ -65,3 +65,6 @@ function y() {
 
 # Zoxide, a better cd 
 eval "$(zoxide init zsh)"
+
+# Use vim keybindings on command line
+set -o vi

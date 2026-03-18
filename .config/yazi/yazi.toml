@@ -1,6 +1,10 @@
 [mgr]
 ratio = [1, 2, 4]
 
+[preview]
+max_width = 4800
+max_height = 3200
+
 [[plugin.prepend_fetchers]]
 id  = "git"
 url = "*"
