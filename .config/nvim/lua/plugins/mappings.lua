@@ -11,6 +11,7 @@ return {
           ["<M-[>"] = { ":bp<CR>" },
           -- Smart files picker
           ["<leader><space>"] = { ":lua Snacks.picker.smart()<CR>", desc = "Smart find files" },
+          ["<leader>xw"] = { "<cmd>TrimTrailingWhitespace<CR>", desc = "Trim trailing whitespace" },
         },
         i = {
           -- Fix Alt accent keys in MacOS

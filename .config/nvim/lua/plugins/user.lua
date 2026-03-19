@@ -113,11 +113,4 @@ return {
       end,
     },
   },
-
-  { "nvim-mini/mini.trailspace", version = "*" },
-
-  -- {
-  --   "cpplain/flexoki-lualine.nvim",
-  --   dependencies = { "cpplain/flexoki.nvim" },
-  -- },
 }

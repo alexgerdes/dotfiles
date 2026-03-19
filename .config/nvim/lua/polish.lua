@@ -23,8 +23,16 @@ opt.relativenumber = false -- Relative line numbers
 -- Disable autoformatting
 vim.g.autoformat = false
 
+-- Trim trailing whitespace
+local function trim_trailing_whitespace()
+  local view = vim.fn.winsaveview()
+  vim.cmd [[keeppatterns %s/\s\+$//e]]
+  vim.fn.winrestview(view)
+end
+
+vim.api.nvim_create_user_command("TrimTrailingWhitespace", trim_trailing_whitespace, {
+  desc = "Trim trailing whitespace",
+})
+
 -- Recognize docker files
 vim.filetype.add { extension = { docker = "dockerfile" } }
-
--- Use MiniTrailSpace to remove trailing spaces
-require('mini.trailspace').setup()
