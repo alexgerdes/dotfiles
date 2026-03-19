@@ -24,9 +24,6 @@ return {
   { import = "astrocommunity.recipes.vscode" },
   -- GenAI
   { import = "astrocommunity.ai.opencode-nvim" },
-  -- { import = "astrocommunity.completion.codex-nvim" },
-  -- { import = "astrocommunity.completion.copilot-lua-cmp" },
-  -- { import = "astrocommunity.editing-support.copilotchat-nvim" },
   -- Conform formatting
   { import = "astrocommunity.editing-support.conform-nvim" },
   -- Yazi file explorer
