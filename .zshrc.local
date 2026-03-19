@@ -68,3 +68,4 @@ eval "$(zoxide init zsh)"
 
 # Use vim keybindings on command line
 set -o vi
+bindkey -M viins '\e.' insert-last-word
