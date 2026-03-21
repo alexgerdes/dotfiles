@@ -19,6 +19,7 @@ opt.encoding = "utf-8"
 opt.incsearch = true -- Starts search before enter
 opt.autoread = true -- Reads files again if they have been changed outside of vim
 opt.relativenumber = false -- Relative line numbers
+opt.wrap = true
 
 -- Disable autoformatting
 vim.g.autoformat = false

@@ -22,7 +22,7 @@ return {
   { import = "astrocommunity.markdown-and-latex.vimtex" },
   -- VsCode
   { import = "astrocommunity.recipes.vscode" },
-  -- GenAI
+  -- OpenCode
   { import = "astrocommunity.ai.opencode-nvim" },
   -- Conform formatting
   { import = "astrocommunity.editing-support.conform-nvim" },

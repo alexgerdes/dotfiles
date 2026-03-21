@@ -123,11 +123,6 @@ return {
     -- Custom Lualine component to show attached language server
     local clients_lsp = function()
       local clients = vim.lsp.get_clients()
-
-      for client in clients do
-        if client.name == "copilot" then return " " end
-      end
-
       if #clients > 0 then
         return " "
       else
@@ -142,10 +137,12 @@ return {
         theme = "auto",
         globalstatus = true,
         disabled_filetypes = { "alpha", "snacks_dashboard" },
+        section_separators = { left = "█", right = "█" },
+        component_separators = { left = "|", right = "|" },
       },
       sections = {
         lualine_a = {
-          { mode_letter, padding = { left = 2, right = 2 } },
+          { mode_letter, padding = { left = 1, right = 1 } },
         },
         lualine_b = {
           { function() return truncate_dir(get_root_dir(), 12) end },
@@ -192,7 +189,7 @@ return {
             on_click = function() vim.cmd "LspInfo" end,
           },
           { get_spellang },
-          { "lsp_status", on_click = function() vim.cmd "LspInfo" end },
+          -- { "lsp_status", on_click = function() vim.cmd "LspInfo" end },
         },
         lualine_z = {
           { "%l:%c" },
