@@ -12,6 +12,8 @@ return {
           -- Smart files picker
           ["<leader><space>"] = { ":lua Snacks.picker.smart()<CR>", desc = "Smart find files" },
           ["<leader>xw"] = { "<cmd>TrimTrailingWhitespace<CR>", desc = "Trim trailing whitespace" },
+          ["<Leader>Os"] = { function() require("opencode").select_server() end, desc = "Select server" },
+          ["<Leader>Op"] = { function() require("opencode").select() end, desc = "Select prompt" },
         },
         i = {
           -- Fix Alt accent keys in MacOS
@@ -21,6 +23,10 @@ return {
           ["<M-u>"] = { "<C-k>:" },
           -- Save using Ctrl-S
           ["<C-s>"] = { "<C-o>:w<CR>", desc = "Save file" },
+        },
+        v = {
+          ["<Leader>Os"] = false,
+          ["<Leader>Op"] = { function() require("opencode").select() end, desc = "Select prompt" },
         },
       },
     },
