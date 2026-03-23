@@ -137,12 +137,12 @@ return {
         theme = "auto",
         globalstatus = true,
         disabled_filetypes = { "alpha", "snacks_dashboard" },
-        section_separators = { left = "█", right = "█" },
+        section_separators = { left = "", right = "" },
         component_separators = { left = "|", right = "|" },
       },
       sections = {
         lualine_a = {
-          { mode_letter, padding = { left = 1, right = 1 } },
+          { mode_letter, padding = { left = 1, right = 2 } },
         },
         lualine_b = {
           { function() return truncate_dir(get_root_dir(), 12) end },
