@@ -12,6 +12,8 @@ alias bibdesk='open -a "BibDesk"'
 alias preview='open -a "Preview"'
 alias elmedia='open -a "Elmedia Player"'
 alias lg='lazygit'
+alias n='nvim'
+alias oc='opencode --port'
 
 # Radio aliases
 alias bonanza='radiologger.sh veronica "De Bonanza" `date +%F` 14 15'
