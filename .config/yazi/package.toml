@@ -37,3 +37,8 @@ hash = "8eabb4e88096f10905a6df62cfaadbf4"
 use = "yazi-rs/flavors:catppuccin-latte"
 rev = "349d27f"
 hash = "c6b710b2aa0fb9c6c7f1ec4db6146104"
+
+[[flavor.deps]]
+use = "gosxrgxx/flexoki-light"
+rev = "1b1e677"
+hash = "a80630a255909a511aba8a98d115bc15"
