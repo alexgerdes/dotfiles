@@ -86,12 +86,6 @@ return {
     opts = {
       formatters_by_ft = {
         tex = { "tex-fmt" },
-        haskell = { "floskell" },
-      },
-      formatters = {
-        floskell = {
-          command = "floskell",
-        },
       },
     },
   },
