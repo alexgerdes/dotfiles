@@ -159,7 +159,7 @@
         "options": {
             "align-let-binds-and-in-expr": true,
             "align-sum-type-decl": true,
-            "decl-no-blank-lines": [],
+            "decl-no-blank-lines": ["where"],
             "flexible-oneline": false,
             "preserve-vertical-space": true,
             "sort-import-lists": true,
