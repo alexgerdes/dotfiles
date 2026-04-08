@@ -23,7 +23,7 @@ alias stenders_ekdom='radiologger.sh veronica "Stenders en Ekdom" `date -v-fri +
 
 alias nrk_klassisk='mpv https://lyd.nrk.no/nrk_radio_klassisk_aac_h'
 alias veronica='mpv https://playerservices.streamtheworld.com/api/livestream-redirect/VERONICAAAC.aac'
-alias ndr2='mpv https://www.ndr.de/resources/metadaten/audio/aac/ndr2.m3u'
+alias ndr2='mpv https://www.ndr.de/resources/metadaten/audio/m3u/ndr2.m3u'
 alias antenne_bayern='mpv https://stream.antenne.de/antenne/stream/aacp'
 alias radio2='mpv https://icecast.omroep.nl/radio2-bb-aac'
 alias radio4='mpv https://icecast.omroep.nl/radio4-bb-aac'
