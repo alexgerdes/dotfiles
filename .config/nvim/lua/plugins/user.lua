@@ -39,7 +39,7 @@ return {
         vim.api.nvim_set_option_value("background", "dark", {})
       end,
       set_light_mode = function()
-        vim.cmd [[colorscheme flexoki]]
+        vim.cmd [[colorscheme catppuccin-latte]]
         vim.api.nvim_set_option_value("background", "light", {})
       end,
       update_interval = 1000,
@@ -96,6 +96,7 @@ return {
     },
   },
 
+  -- Flexoki colorscheme
   {
     "cpplain/flexoki.nvim",
     lazy = false,
@@ -112,5 +113,14 @@ return {
         }
       end,
     },
+  },
+
+  -- Markdown rendering, disabled for now, needs an update to work with treesitter and newer neovim
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
 }
