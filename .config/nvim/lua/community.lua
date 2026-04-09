@@ -6,12 +6,8 @@
 return {
   "AstroNvim/astrocommunity",
   -- Color schemes
-  { import = "astrocommunity.colorscheme.night-owl-nvim" },
-  { import = "astrocommunity.colorscheme.everforest" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.colorscheme.github-nvim-theme" },
-  { import = "astrocommunity.colorscheme.onedarkpro-nvim" },
   { import = "astrocommunity.colorscheme.kanagawa-paper-nvim" },
   -- Languages
   { import = "astrocommunity.pack.lua" },
