@@ -9,8 +9,10 @@ max_height = 3200
 id  = "git"
 url = "*"
 run = "git"
+group = "git"
 
 [[plugin.prepend_fetchers]]
 id  = "git"
 url = "*/"
 run = "git"
+group = "git"
