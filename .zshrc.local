@@ -1,5 +1,6 @@
 # Homebrew prefix
 export HOMEBREW_PREFIX=/opt/homebrew
+export HOMEBREW_NO_ENV_HINTS=1
 
 # Macos specific paths
 export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH  # Brew
