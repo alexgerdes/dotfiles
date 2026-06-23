@@ -1,5 +1,8 @@
 require("githead"):setup()
-require("full-border"):setup()
+require("full-border"):setup {
+	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
+	type = ui.Border.ROUNDED,
+}
 require("yaziline"):setup({
 	color = "#89b4fa",
 	secondary_color = "#6c7086",
