@@ -80,17 +80,19 @@ podcast_enabled=0
 if [ ! -r "$PODCAST_CONFIG" ]; then
     printf 'Warning: podcast config is not readable; feed generation is disabled: %s\n' "$PODCAST_CONFIG" >&2
 else
-    unset PODCAST_BASE_URL PODCAST_FEED_DIR PODCAST_LANGUAGE
+    unset PODCAST_ARTWORK_URL PODCAST_BASE_URL PODCAST_FEED_DIR PODCAST_LANGUAGE
     if ! "$BASH" -n "$PODCAST_CONFIG"; then
         printf 'Warning: podcast config has invalid shell syntax; feed generation is disabled: %s\n' \
             "$PODCAST_CONFIG" >&2
     elif ! . "$PODCAST_CONFIG"; then
         printf 'Warning: podcast config could not be loaded; feed generation is disabled: %s\n' \
             "$PODCAST_CONFIG" >&2
-    elif [ -z "${PODCAST_BASE_URL:-}" ] || [ -z "${PODCAST_FEED_DIR:-}" ]; then
-        printf 'Warning: podcast config is missing PODCAST_BASE_URL or PODCAST_FEED_DIR; feed generation is disabled.\n' >&2
+    elif [ -z "${PODCAST_ARTWORK_URL:-}" ] || [ -z "${PODCAST_BASE_URL:-}" ] || [ -z "${PODCAST_FEED_DIR:-}" ]; then
+        printf 'Warning: podcast config is missing PODCAST_ARTWORK_URL, PODCAST_BASE_URL, or PODCAST_FEED_DIR; feed generation is disabled.\n' >&2
     elif [ "${PODCAST_BASE_URL#https://}" = "$PODCAST_BASE_URL" ]; then
         printf 'Warning: PODCAST_BASE_URL must use HTTPS; feed generation is disabled.\n' >&2
+    elif [ "${PODCAST_ARTWORK_URL#https://}" = "$PODCAST_ARTWORK_URL" ]; then
+        printf 'Warning: PODCAST_ARTWORK_URL must use HTTPS; feed generation is disabled.\n' >&2
     elif [ ! -r "$PODCAST_GENERATOR" ]; then
         printf 'Warning: podcast generator is not readable; feed generation is disabled: %s\n' \
             "$PODCAST_GENERATOR" >&2
@@ -100,7 +102,7 @@ else
         printf 'Warning: ffprobe was not found in PATH; feed generation is disabled.\n' >&2
     else
         PODCAST_LANGUAGE=${PODCAST_LANGUAGE:-nl-NL}
-        readonly PODCAST_BASE_URL PODCAST_FEED_DIR PODCAST_LANGUAGE PYTHON_BIN
+        readonly PODCAST_ARTWORK_URL PODCAST_BASE_URL PODCAST_FEED_DIR PODCAST_LANGUAGE PYTHON_BIN
         podcast_enabled=1
     fi
 fi
@@ -180,6 +182,7 @@ if [ "$podcast_enabled" -eq 1 ]; then
         --music-dir "$OUTPUT_DIR" \
         --feed-dir "$PODCAST_FEED_DIR" \
         --base-url "$PODCAST_BASE_URL" \
+        --artwork-url "$PODCAST_ARTWORK_URL" \
         --station "$station_name" \
         --show "$show_name" \
         --language "$PODCAST_LANGUAGE"

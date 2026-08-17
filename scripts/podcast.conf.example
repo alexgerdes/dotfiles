@@ -2,5 +2,6 @@
 # Generate a private token there and do not commit the configured file.
 
 PODCAST_BASE_URL="https://music.klarit.se/podcasts/REPLACE_WITH_SECRET_TOKEN"
+PODCAST_ARTWORK_URL="$PODCAST_BASE_URL/artwork/radiopod.jpg"
 PODCAST_FEED_DIR="$HOME/radiopod/podcasts/feeds"
 PODCAST_LANGUAGE="nl-NL"

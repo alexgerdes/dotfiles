@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="3000" viewBox="0 0 3000 3000">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07131d"/>
+      <stop offset="1" stop-color="#102d3a"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff4d2e"/>
+      <stop offset="1" stop-color="#ffb000"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="3000" height="3000" fill="url(#background)"/>
+  <path d="M0 0h1180L430 3000H0z" fill="#0b91b6"/>
+  <path d="M3000 0v3000H1760L2560 0z" fill="#0ed1c1" opacity="0.18"/>
+
+  <g fill="none" stroke="#6fffea" opacity="0.34">
+    <circle cx="2240" cy="750" r="240" stroke-width="34"/>
+    <circle cx="2240" cy="750" r="390" stroke-width="26"/>
+    <circle cx="2240" cy="750" r="550" stroke-width="18"/>
+  </g>
+
+  <g transform="translate(280 830)">
+    <rect width="430" height="86" rx="43" fill="url(#signal)"/>
+    <text x="215" y="60" fill="#07131d" font-family="Helvetica, Arial, sans-serif" font-size="44" font-weight="700" letter-spacing="9" text-anchor="middle">ON AIR</text>
+
+    <text x="0" y="610" fill="#f6fbf8" font-family="Arial Black, Helvetica, Arial, sans-serif" font-size="430" font-weight="900" letter-spacing="-24">RADIO</text>
+    <text x="0" y="1010" fill="#f6fbf8" font-family="Arial Black, Helvetica, Arial, sans-serif" font-size="430" font-weight="900" letter-spacing="-24">POD</text>
+
+    <rect y="1160" width="2220" height="22" fill="url(#signal)"/>
+    <text x="0" y="1325" fill="#9ee9df" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="22">PRIVATE BROADCAST ARCHIVE</text>
+  </g>
+
+  <g transform="translate(1880 2020)" fill="url(#signal)">
+    <rect x="0" y="260" width="70" height="220" rx="35"/>
+    <rect x="125" y="170" width="70" height="400" rx="35"/>
+    <rect x="250" y="40" width="70" height="660" rx="35"/>
+    <rect x="375" y="130" width="70" height="480" rx="35"/>
+    <rect x="500" y="220" width="70" height="300" rx="35"/>
+    <rect x="625" y="90" width="70" height="560" rx="35"/>
+    <rect x="750" y="190" width="70" height="360" rx="35"/>
+  </g>
+</svg>

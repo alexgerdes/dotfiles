@@ -20,9 +20,11 @@ from pathlib import Path
 from urllib.parse import quote, urlparse
 
 ATOM_NAMESPACE = "http://www.w3.org/2005/Atom"
+CONTENT_NAMESPACE = "http://purl.org/rss/1.0/modules/content/"
 ITUNES_NAMESPACE = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 
 ET.register_namespace("atom", ATOM_NAMESPACE)
+ET.register_namespace("content", CONTENT_NAMESPACE)
 ET.register_namespace("itunes", ITUNES_NAMESPACE)
 
 
@@ -45,6 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--music-dir", required=True, type=Path, help="Directory containing recorded MP3 files")
     parser.add_argument("--feed-dir", required=True, type=Path, help="Directory in which to write RSS feeds")
     parser.add_argument("--base-url", required=True, help="Private HTTPS URL prefix for feeds and audio")
+    parser.add_argument("--artwork-url", required=True, help="Public HTTPS URL for square podcast artwork")
     parser.add_argument("--station", required=True, help="Station name stored in the MP3 artist tag")
     parser.add_argument("--show", required=True, help="Show name stored in the MP3 album tag")
     parser.add_argument("--language", default="en", help="Podcast language code (default: en)")
@@ -65,6 +68,13 @@ def normalize_base_url(value: str) -> str:
     if parsed.scheme != "https" or not parsed.netloc or parsed.query or parsed.fragment:
         raise PodcastFeedError("base URL must be an HTTPS URL without a query string or fragment")
     return base_url
+
+
+def normalize_artwork_url(value: str) -> str:
+    parsed = urlparse(value)
+    if parsed.scheme != "https" or not parsed.netloc or parsed.query or parsed.fragment:
+        raise PodcastFeedError("artwork URL must be an HTTPS URL without a query string or fragment")
+    return value
 
 
 def probe_mp3(ffprobe_bin: str, path: Path) -> tuple[dict[str, str], int]:
@@ -159,7 +169,7 @@ def indent_xml(element: ET.Element, level: int = 0) -> None:
             indent_xml(child, level + 1)
         if not child.tail or not child.tail.strip():
             child.tail = indentation
-    elif level and (not element.tail or not element.tail.strip()):
+    if level and (not element.tail or not element.tail.strip()):
         element.tail = indentation
 
 
@@ -167,8 +177,8 @@ def build_feed(
     station_name: str,
     show_name: str,
     language: str,
-    base_url: str,
     feed_url: str,
+    artwork_url: str,
     episodes: list[Episode],
 ) -> ET.ElementTree:
     podcast_title = f"{station_name} - {show_name}"
@@ -177,10 +187,14 @@ def build_feed(
     rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
     add_text_element(channel, "title", podcast_title)
-    add_text_element(channel, "link", base_url)
+    add_text_element(channel, "link", feed_url)
     add_text_element(channel, "description", podcast_description)
     add_text_element(channel, "language", language)
     add_text_element(channel, "lastBuildDate", format_datetime(datetime.now(timezone.utc), usegmt=True))
+    image = ET.SubElement(channel, "image")
+    add_text_element(image, "url", artwork_url)
+    add_text_element(image, "title", podcast_title)
+    add_text_element(image, "link", feed_url)
     ET.SubElement(
         channel,
         f"{{{ATOM_NAMESPACE}}}link",
@@ -189,12 +203,15 @@ def build_feed(
     add_text_element(channel, f"{{{ITUNES_NAMESPACE}}}author", station_name)
     add_text_element(channel, f"{{{ITUNES_NAMESPACE}}}summary", podcast_description)
     add_text_element(channel, f"{{{ITUNES_NAMESPACE}}}explicit", "false")
+    add_text_element(channel, f"{{{ITUNES_NAMESPACE}}}type", "episodic")
+    ET.SubElement(channel, f"{{{ITUNES_NAMESPACE}}}image", {"href": artwork_url})
     ET.SubElement(channel, f"{{{ITUNES_NAMESPACE}}}category", {"text": "Music"})
 
     for episode in episodes:
         item = ET.SubElement(channel, "item")
         add_text_element(item, "title", episode.title)
         add_text_element(item, "description", episode.description)
+        add_text_element(item, f"{{{CONTENT_NAMESPACE}}}encoded", episode.description)
         add_text_element(item, "link", episode.enclosure_url)
         add_text_element(item, "pubDate", format_datetime(episode.published_at, usegmt=True))
         guid = hashlib.sha256(episode.enclosure_url.encode("utf-8")).hexdigest()
@@ -229,7 +246,7 @@ def write_feed_atomically(feed: ET.ElementTree, destination: Path) -> None:
             delete=False,
         ) as temporary_file:
             temporary_path = Path(temporary_file.name)
-            feed.write(temporary_file, encoding="utf-8", xml_declaration=True)
+            feed.write(temporary_file, encoding="UTF-8", xml_declaration=True)
         temporary_path.chmod(0o644)
         os.replace(temporary_path, destination)
     finally:
@@ -242,6 +259,7 @@ def main() -> int:
 
     try:
         base_url = normalize_base_url(args.base_url)
+        artwork_url = normalize_artwork_url(args.artwork_url)
         music_dir = args.music_dir.expanduser().resolve()
         feed_dir = args.feed_dir.expanduser().resolve()
         if not music_dir.is_dir():
@@ -257,7 +275,7 @@ def main() -> int:
         if not episodes:
             raise PodcastFeedError(f"no tagged MP3 recordings found for {args.station} - {args.show}")
 
-        feed = build_feed(args.station, args.show, args.language, base_url, feed_url, episodes)
+        feed = build_feed(args.station, args.show, args.language, feed_url, artwork_url, episodes)
         destination = feed_dir / feed_filename
         write_feed_atomically(feed, destination)
     except PodcastFeedError as error:
