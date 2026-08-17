@@ -13,6 +13,11 @@ set -u
 # Configuration
 OUTPUT_DIR="$HOME/radiopod/music/"
 readonly TEMP_DIR="/tmp"
+readonly PODCAST_CONFIG="$HOME/.config/radio_logger/podcast.conf"
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+readonly SCRIPT_DIR
+readonly PODCAST_GENERATOR="$SCRIPT_DIR/podcast_feed.py"
 
 usage() {
     printf 'Usage: %s STREAM_URL DURATION STATION_NAME SHOW_NAME\n' "$(basename "$0")" >&2
@@ -69,6 +74,35 @@ readonly FFMPEG_BIN
 if [ ! -x "$FFMPEG_BIN" ]; then
     printf 'Error: ffmpeg is not executable: %s\n' "$FFMPEG_BIN" >&2
     exit 69
+fi
+
+podcast_enabled=0
+if [ ! -r "$PODCAST_CONFIG" ]; then
+    printf 'Warning: podcast config is not readable; feed generation is disabled: %s\n' "$PODCAST_CONFIG" >&2
+else
+    unset PODCAST_BASE_URL PODCAST_FEED_DIR PODCAST_LANGUAGE
+    if ! "$BASH" -n "$PODCAST_CONFIG"; then
+        printf 'Warning: podcast config has invalid shell syntax; feed generation is disabled: %s\n' \
+            "$PODCAST_CONFIG" >&2
+    elif ! . "$PODCAST_CONFIG"; then
+        printf 'Warning: podcast config could not be loaded; feed generation is disabled: %s\n' \
+            "$PODCAST_CONFIG" >&2
+    elif [ -z "${PODCAST_BASE_URL:-}" ] || [ -z "${PODCAST_FEED_DIR:-}" ]; then
+        printf 'Warning: podcast config is missing PODCAST_BASE_URL or PODCAST_FEED_DIR; feed generation is disabled.\n' >&2
+    elif [ "${PODCAST_BASE_URL#https://}" = "$PODCAST_BASE_URL" ]; then
+        printf 'Warning: PODCAST_BASE_URL must use HTTPS; feed generation is disabled.\n' >&2
+    elif [ ! -r "$PODCAST_GENERATOR" ]; then
+        printf 'Warning: podcast generator is not readable; feed generation is disabled: %s\n' \
+            "$PODCAST_GENERATOR" >&2
+    elif ! PYTHON_BIN=$(command -v python3); then
+        printf 'Warning: python3 was not found in PATH; feed generation is disabled.\n' >&2
+    elif ! command -v ffprobe >/dev/null 2>&1; then
+        printf 'Warning: ffprobe was not found in PATH; feed generation is disabled.\n' >&2
+    else
+        PODCAST_LANGUAGE=${PODCAST_LANGUAGE:-nl-NL}
+        readonly PODCAST_BASE_URL PODCAST_FEED_DIR PODCAST_LANGUAGE PYTHON_BIN
+        podcast_enabled=1
+    fi
 fi
 
 timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
@@ -138,4 +172,22 @@ mv "$temporary_file" "$output_file" || {
     exit 73
 }
 
+trap - EXIT
 printf 'Finished recording: %s\n' "$output_file"
+
+if [ "$podcast_enabled" -eq 1 ]; then
+    "$PYTHON_BIN" "$PODCAST_GENERATOR" \
+        --music-dir "$OUTPUT_DIR" \
+        --feed-dir "$PODCAST_FEED_DIR" \
+        --base-url "$PODCAST_BASE_URL" \
+        --station "$station_name" \
+        --show "$show_name" \
+        --language "$PODCAST_LANGUAGE"
+
+    podcast_status=$?
+    if [ "$podcast_status" -ne 0 ]; then
+        printf 'Error: recording completed, but podcast feed generation failed with exit status %s.\n' \
+            "$podcast_status" >&2
+        exit "$podcast_status"
+    fi
+fi

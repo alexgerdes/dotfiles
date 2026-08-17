@@ -1,0 +1,6 @@
+# Copy this file to $HOME/.config/radio_logger/podcast.conf on the server.
+# Generate a private token there and do not commit the configured file.
+
+PODCAST_BASE_URL="https://music.klarit.se/podcasts/REPLACE_WITH_SECRET_TOKEN"
+PODCAST_FEED_DIR="$HOME/radiopod/podcasts/feeds"
+PODCAST_LANGUAGE="nl-NL"
