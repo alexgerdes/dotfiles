@@ -24,11 +24,11 @@
     <rect width="430" height="86" rx="43" fill="url(#signal)"/>
     <text x="215" y="60" fill="#07131d" font-family="Helvetica, Arial, sans-serif" font-size="44" font-weight="700" letter-spacing="9" text-anchor="middle">ON AIR</text>
 
-    <text x="0" y="610" fill="#f6fbf8" font-family="Arial Black, Helvetica, Arial, sans-serif" font-size="430" font-weight="900" letter-spacing="-24">RADIO</text>
-    <text x="0" y="1010" fill="#f6fbf8" font-family="Arial Black, Helvetica, Arial, sans-serif" font-size="430" font-weight="900" letter-spacing="-24">POD</text>
+    <text x="0" y="610" fill="#f6fbf8" font-family="Arial Black, Helvetica, Arial, sans-serif" font-size="430" font-weight="900" letter-spacing="-24">Alex'</text>
+    <text x="0" y="1010" fill="#f6fbf8" font-family="Arial Black, Helvetica, Arial, sans-serif" font-size="430" font-weight="900" letter-spacing="-24">RadioPod</text>
 
     <rect y="1160" width="2220" height="22" fill="url(#signal)"/>
-    <text x="0" y="1325" fill="#9ee9df" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="22">PRIVATE BROADCAST ARCHIVE</text>
+    <text x="0" y="1325" fill="#9ee9df" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="22">PRIVATE RADIO ARCHIVE</text>
   </g>
 
   <g transform="translate(1880 2020)" fill="url(#signal)">
