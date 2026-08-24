@@ -63,7 +63,7 @@ return {
     lazy = false,
   },
 
-  -- Notifcations and commands in a neat window
+  -- Extend the AstroCommunity Noice spec to use nvim-notify as its notification backend.
   {
     "folke/noice.nvim",
     event = "VeryLazy",

@@ -20,6 +20,8 @@ return {
   { import = "astrocommunity.recipes.vscode" },
   -- OpenCode
   { import = "astrocommunity.ai.opencode-nvim" },
+  -- Notifications and command-line UI
+  { import = "astrocommunity.utility.noice-nvim" },
   -- Conform formatting
   { import = "astrocommunity.editing-support.conform-nvim" },
   -- Yazi file explorer
