@@ -1,0 +1,72 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name music.klarit.se;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name music.klarit.se;
+
+    location ^~ /podcasts/REPLACE_WITH_SECRET_TOKEN/audio/ {
+        alias /home/alex/radiopod/music/;
+        autoindex off;
+
+        types {
+            audio/mpeg mp3;
+        }
+
+        limit_except GET HEAD {
+            deny all;
+        }
+
+        add_header X-Content-Type-Options nosniff always;
+    }
+
+    location ^~ /podcasts/REPLACE_WITH_SECRET_TOKEN/feeds/ {
+        alias /home/alex/radiopod/podcasts/feeds/;
+        autoindex off;
+
+        types {
+            application/rss+xml xml;
+        }
+
+        limit_except GET HEAD {
+            deny all;
+        }
+
+        add_header Cache-Control "no-cache";
+        add_header X-Content-Type-Options nosniff always;
+    }
+
+    location ^~ /podcasts/REPLACE_WITH_SECRET_TOKEN/artwork/ {
+        alias /home/alex/radiopod/podcasts/artwork/;
+        autoindex off;
+
+        types {
+            image/jpeg jpg jpeg;
+            image/png png;
+        }
+
+        limit_except GET HEAD {
+            deny all;
+        }
+
+        add_header Cache-Control "public, max-age=86400";
+        add_header X-Content-Type-Options nosniff always;
+    }
+
+    location / {
+        return 404;
+    }
+
+    ssl_certificate /etc/letsencrypt/live/music.klarit.se/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/music.klarit.se/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
