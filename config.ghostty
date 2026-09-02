@@ -1,0 +1,15 @@
+font-family = VictorMono Nerd Font
+font-size = 14
+font-style-italic = Regular
+font-style-bold-italic = Bold
+window-padding-x = 6
+window-padding-y = 6
+theme = light:Flexoki Light,dark:Catppuccin Mocha
+shell-integration = zsh
+shell-integration-features = true
+quick-terminal-position = center
+quick-terminal-size = 50%,70%
+quick-terminal-screen = main
+keybind = global:super+y=toggle_quick_terminal
+macos-titlebar-style = tabs
+copy-on-select = clipboard
