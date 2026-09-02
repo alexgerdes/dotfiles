@@ -39,7 +39,7 @@ return {
         vim.api.nvim_set_option_value("background", "dark", {})
       end,
       set_light_mode = function()
-        vim.cmd [[colorscheme catppuccin-latte]]
+        vim.cmd [[colorscheme flexoki]]
         vim.api.nvim_set_option_value("background", "light", {})
       end,
       update_interval = 1000,
