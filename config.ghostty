@@ -13,3 +13,4 @@ quick-terminal-screen = main
 keybind = global:super+y=toggle_quick_terminal
 macos-titlebar-style = tabs
 copy-on-select = clipboard
+macos-option-as-alt = left
