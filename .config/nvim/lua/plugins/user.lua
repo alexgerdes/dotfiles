@@ -96,22 +96,32 @@ return {
     },
   },
 
-  -- Flexoki colorscheme
+  -- Local Flexoki colorscheme
   {
-    "cpplain/flexoki.nvim",
+    "AstroNvim/astroui",
     lazy = false,
     priority = 1000,
+    init = function()
+      require("flexoki").setup {
+        highlight_override = function(colors)
+          return {
+            NeoTreeTabActive = { bg = colors.bg, fg = colors.tx, bold = true },
+            NeoTreeTabInactive = { bg = colors.bg2 },
+            NeoTreeTabSeparatorActive = { fg = colors.bg, bg = colors.bg },
+            NeoTreeTabSeparatorInactive = { fg = colors.bg2, bg = colors.bg2 },
+            StatusLine = { fg = colors.tx, bg = colors.bg },
+          }
+        end,
+      }
+    end,
+  },
+
+  {
+    "folke/snacks.nvim",
     opts = {
-      -- Override specific highlight groups
-      highlight_override = function(colors)
-        return {
-          NeoTreeTabActive = { bg = colors.bg, fg = colors.tx, bold = true },
-          NeoTreeTabInactive = { bg = colors.bg2 }, -- , fg = C.overlay0 },
-          NeoTreeTabSeparatorActive = { fg = colors.bg, bg = colors.bg },
-          NeoTreeTabSeparatorInactive = { fg = colors.bg2, bg = colors.bg2 },
-          StatusLine = { fg = colors.tx, bg = colors.bg },
-        }
-      end,
+      picker = {
+        layout = { backdrop = false },
+      },
     },
   },
 
