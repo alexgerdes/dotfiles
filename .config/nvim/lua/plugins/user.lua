@@ -118,11 +118,23 @@ return {
 
   {
     "folke/snacks.nvim",
-    opts = {
-      picker = {
-        layout = { backdrop = false },
-      },
-    },
+    opts = function(_, opts)
+      opts.picker.layout = { backdrop = false }
+      local on_show = opts.picker.on_show
+      opts.picker.on_show = function(picker)
+        if on_show then on_show(picker) end
+        vim.schedule(function()
+          local win = picker.preview.win.win
+          if win and vim.api.nvim_win_is_valid(win) then
+            vim.wo[win].winhighlight = vim.wo[win].winhighlight
+              .. ",LineNr:SnacksPickerPreviewLineNr"
+              .. ",CursorLineNr:SnacksPickerPreviewLineNr"
+              .. ",SignColumn:SnacksPickerPreviewSignColumn"
+              .. ",FoldColumn:SnacksPickerPreviewFoldColumn"
+          end
+        end)
+      end
+    end,
   },
 
   -- Markdown rendering, disabled for now, needs an update to work with treesitter and newer neovim
