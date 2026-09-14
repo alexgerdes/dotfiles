@@ -145,4 +145,24 @@ return {
     ---@type render.md.UserConfig
     opts = {},
   },
+
+  {
+    "obsidian-nvim/obsidian.nvim",
+    version = "*", -- use latest release, remove to use latest commit
+    ---@module 'obsidian'
+    ---@type obsidian.config
+    opts = {
+      legacy_commands = false, -- this will be removed in 4.0.0
+      workspaces = {
+        {
+          name = "Chalmers",
+          path = "~/Library/CloudStorage/OneDrive-Chalmers/Obsidian/Chalmers/",
+        },
+        {
+          name = "Personal",
+          path = "~/Library/CloudStorage/OneDrive-Chalmers/Obsidian/Personal",
+        },
+      },
+    },
+  },
 }
