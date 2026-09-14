@@ -26,4 +26,6 @@ return {
   { import = "astrocommunity.editing-support.conform-nvim" },
   -- Yazi file explorer
   { import = "astrocommunity.file-explorer.yazi-nvim" },
+  -- zk notes
+  { import = "astrocommunity.note-taking.zk-nvim" },
 }

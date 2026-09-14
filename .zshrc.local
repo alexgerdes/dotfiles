@@ -16,6 +16,19 @@ alias lg='lazygit'
 alias n='nvim'
 alias oc='opencode --port'
 
+# zk notebooks: explicit selection works from any directory.
+export ZK_WORK_DIR="$HOME/OneDrive - Chalmers/Journal"
+export ZK_PERSONAL_DIR="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Journal"
+export ZK_NOTEBOOK_DIR="$ZK_PERSONAL_DIR"
+zkw() { command zk --notebook-dir "$ZK_WORK_DIR" "${@:-notes}"; }
+zkp() { command zk --notebook-dir "$ZK_PERSONAL_DIR" "${@:-notes}"; }
+alias zwd='zkw daily'
+alias zpd='zkp daily'
+alias zwn='zkw n'
+alias zpn='zkp n'
+alias cdwork='cd "$ZK_WORK_DIR"'
+alias cdpersonal='cd "$ZK_PERSONAL_DIR"'
+
 # Radio aliases
 alias bonanza='radiologger.sh veronica "De Bonanza" `date +%F` 14 15'
 alias ekdom='radiologger.sh veronica "Ekdom in de morgen" `date +%F` 6 8'

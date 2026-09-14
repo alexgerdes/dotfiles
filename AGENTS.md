@@ -51,13 +51,25 @@ There is no traditional build step for this Neovim config. Use formatting, linti
 - Sync plugins, then start and quit: `nvim --headless "+Lazy! sync" "+qa"`
 - Run health checks headlessly: `nvim --headless "+checkhealth" "+qa"`
 
+### ZK Context helper
+
+The standalone macOS Swift helper lives in `tools/zk-context/`. From the repo root:
+
+- Build and validate: `make -C tools/zk-context check`
+- Mocked Neovim integration checks: `make -C tools/zk-context test`
+- Install locally: `make -C tools/zk-context install`
+- Live location check (may request permission): `make -C tools/zk-context test-live`
+
+Keep generated bundles in the ignored `.build/` directory. Do not commit location
+caches or compiled binaries. See the helper README for installation on other Macs.
+
 ### Single-test guidance
-There is no checked-in automated test suite right now.
+Apart from the ZK Context checks above, there is no checked-in automated test suite.
 Observed during analysis:
 - No `tests/` directory
 - No `spec/` directory
 - No Plenary test harness in source
-- No Makefile/npm/just wrapper with test targets
+- No general Neovim Makefile/npm/just wrapper with test targets
 
 So there is no true "run one unit test" command to document today.
 Use the closest targeted verification instead:
