@@ -10,7 +10,7 @@ shell-integration-features = true
 quick-terminal-position = center
 quick-terminal-size = 960px,560px
 quick-terminal-screen = main
-keybind = global:alt+space=toggle_quick_terminal
+keybind = global:alt+space = toggle_quick_terminal
 macos-titlebar-style = tabs
 copy-on-select = clipboard
 macos-option-as-alt = left
