@@ -166,6 +166,7 @@ return {
       -- see below for full list of optional dependencies 👇
     },
     opts = {
+      ui = { enable = false },
       workspaces = {
         {
           name = "Personal",
@@ -173,7 +174,7 @@ return {
         },
         {
           name = "Work",
-          path = "~/Library/CloudStorage/OneDrive-Chalmers/Obsidian/Work",
+          path = "~/Repos/chalmers/obsidian",
         },
       },
 
