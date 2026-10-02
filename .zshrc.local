@@ -14,7 +14,7 @@ alias preview='open -a "Preview"'
 alias elmedia='open -a "Elmedia Player"'
 alias lg='lazygit'
 alias n='nvim'
-alias oc='opencode --port'
+alias oc='opencode'
 
 # zk notebooks: explicit selection works from any directory.
 export ZK_WORK_DIR="$HOME/OneDrive - Chalmers/Journal"

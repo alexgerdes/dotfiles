@@ -120,17 +120,6 @@ return {
       callback = function() git_root_cache = {} end,
     })
 
-    local opencode_status = function()
-      local ok, opencode = pcall(require, "opencode")
-      if not ok then return "" end
-
-      local status = opencode.statusline()
-      local events_ok, events = pcall(require, "opencode.events")
-      if events_ok and not events.connected_server then status = status .. " " end
-
-      return status
-    end
-
     local open_opencode = function()
       local ok, opencode = pcall(require, "opencode")
       if ok then opencode.select() end
@@ -199,7 +188,7 @@ return {
           },
         },
         lualine_y = {
-          { opencode_status, on_click = open_opencode },
+          { require("opencode").statusline, on_click = open_opencode },
           {
             clients_lsp,
             on_click = function() vim.cmd "LspInfo" end,
