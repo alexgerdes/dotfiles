@@ -35,12 +35,12 @@ return {
     cond = function() return vim.loop.os_uname().sysname == "Darwin" and not vim.g.vscode end,
     opts = {
       set_dark_mode = function()
-        vim.cmd [[colorscheme catppuccin-mocha]]
         vim.api.nvim_set_option_value("background", "dark", {})
+        vim.cmd [[colorscheme catppuccin-mocha]]
       end,
       set_light_mode = function()
-        vim.cmd [[colorscheme flexoki]]
         vim.api.nvim_set_option_value("background", "light", {})
+        vim.cmd [[colorscheme flexoki]]
       end,
       update_interval = 1000,
       fallback = "dark",
