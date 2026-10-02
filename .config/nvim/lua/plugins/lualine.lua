@@ -45,8 +45,19 @@ local function mode_letter()
   return mode_map[mode] or "?"
 end
 
+local git_root_cache = {}
+
+local function get_git_root(bufnr, path)
+  local cached = git_root_cache[bufnr]
+  if cached and cached.path == path then return cached.root or nil end
+
+  local root = vim.fs.root(vim.fs.dirname(path), ".git")
+  git_root_cache[bufnr] = { path = path, root = root or false }
+  return root
+end
+
 local function get_root_dir()
-  local ok, result
+  local bufnr = vim.api.nvim_get_current_buf()
   local path = vim.api.nvim_buf_get_name(0)
   local cwd = vim.fn.getcwd()
 
@@ -59,14 +70,9 @@ local function get_root_dir()
     if root and path:sub(1, #root) == root then return vim.fn.fnamemodify(root, ":t") end
   end
 
-  -- Try Git root safely
-  ok, result = pcall(function()
-    local git_root = vim.fn.systemlist("git -C " .. vim.fn.fnameescape(path) .. " rev-parse --show-toplevel")[1]
-    if git_root and git_root ~= "" and vim.fn.isdirectory(git_root) == 1 then
-      return vim.fn.fnamemodify(git_root, ":t")
-    end
-  end)
-  if ok and result then return result end
+  -- Try cached Git root without blocking statusline updates on a shell command
+  local git_root = get_git_root(bufnr, path)
+  if git_root then return vim.fn.fnamemodify(git_root, ":t") end
 
   -- Fallback: name of current working directory
   return vim.fn.fnamemodify(cwd, ":t")
@@ -104,6 +110,16 @@ return {
     },
   },
   config = function()
+    local cache_group = vim.api.nvim_create_augroup("LualineGitRootCache", { clear = true })
+    vim.api.nvim_create_autocmd({ "BufDelete", "BufFilePost" }, {
+      group = cache_group,
+      callback = function(args) git_root_cache[args.buf] = nil end,
+    })
+    vim.api.nvim_create_autocmd("DirChanged", {
+      group = cache_group,
+      callback = function() git_root_cache = {} end,
+    })
+
     local opencode_status = function()
       local ok, opencode = pcall(require, "opencode")
       if not ok then return "" end

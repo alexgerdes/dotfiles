@@ -16,6 +16,7 @@ opt.copyindent = true
 opt.shell = "/bin/zsh"
 opt.cursorline = true
 opt.guicursor:append "a:Cursor/lCursor" -- Use the colorscheme cursor instead of Ghostty's potentially invisible default
+opt.guicursor:append "a:blinkwait700-blinkon500-blinkoff500"
 opt.encoding = "utf-8"
 opt.incsearch = true -- Starts search before enter
 opt.autoread = true -- Reads files again if they have been changed outside of vim
