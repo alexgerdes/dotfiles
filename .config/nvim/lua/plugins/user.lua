@@ -154,6 +154,7 @@ return {
     lazy = true,
     ft = "markdown",
     cmd = "Obsidian",
+    init = function() require("obsidian_work_templates").setup() end,
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
     -- event = {
     --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
@@ -179,6 +180,11 @@ return {
         {
           name = "Work",
           path = "~/Repos/chalmers/obsidian",
+          overrides = {
+            frontmatter = { enabled = false },
+            daily_notes = { folder = "journal", date_format = "YYYY/YYYY-MM-DD", default_tags = {} },
+            callbacks = { create_note = function(note) require("obsidian_work_templates").on_create(note) end },
+          },
         },
       },
     },
