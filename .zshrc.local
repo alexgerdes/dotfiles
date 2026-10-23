@@ -3,7 +3,8 @@ export HOMEBREW_PREFIX=/opt/homebrew
 export HOMEBREW_NO_ENV_HINTS=1
 
 # Macos specific paths
-export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH  # Brew
+export PATH="/Applications/Inkscape.app/Contents/MacOS:$PATH"
+export PATH=$PATH:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin # Brew
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 export PATH=$PATH:~/.cabal/bin
 
@@ -16,18 +17,27 @@ alias lg='lazygit'
 alias n='nvim'
 alias oc='opencode'
 
-# zk notebooks: explicit selection works from any directory.
-export ZK_WORK_DIR="$HOME/OneDrive - Chalmers/Journal"
-export ZK_PERSONAL_DIR="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Journal"
-export ZK_NOTEBOOK_DIR="$ZK_PERSONAL_DIR"
-zkw() { command zk --notebook-dir "$ZK_WORK_DIR" "${@:-notes}"; }
-zkp() { command zk --notebook-dir "$ZK_PERSONAL_DIR" "${@:-notes}"; }
-alias zwd='zkw daily'
-alias zpd='zkp daily'
-alias zwn='zkw n'
-alias zpn='zkp n'
-alias cdwork='cd "$ZK_WORK_DIR"'
-alias cdpersonal='cd "$ZK_PERSONAL_DIR"'
+# Ripgrep and fzf for VScode
+code-rg() {
+    local RG='rg --column --line-number --no-heading --color=always --smart-case'
+
+    fzf --ansi --disabled --query="$*" \
+        --delimiter : \
+        --bind "start:reload:$RG -- {q} || true" \
+        --bind "change:reload:$RG -- {q} || true" \
+        --preview 'bat --color=always --style=numbers --highlight-line {2} {1}' \
+        --preview-window 'right,60%,+{2}-/2' \
+        --bind 'enter:become(code -r --goto {1}:{2}:{3})'
+}
+
+code-fzf() {
+    local file
+    file="$(rg --files --hidden -g '!.git' |
+        fzf --preview 'bat --color=always --style=numbers -- {}' \
+            --preview-window 'right,60%')" || return
+
+    [[ -n "$file" ]] && code -r -- "$file"
+}
 
 # Radio aliases
 alias bonanza='radiologger.sh veronica "De Bonanza" `date +%F` 14 15'
@@ -55,6 +65,7 @@ alias xxl_stenders='mpv https://mcp-1.streampanel.nl:8020/bonanza_mp3'
 alias ideas='ssh -A -t alex@up.science.uu.nl ssh science-vs105'
 alias ideastest='ssh -A -t alex@up.science.uu.nl ssh science-vs106'
 alias wotan='ssh wotan.klarit.se'
+alias ds-labs='ssh dat710@ds-labs.cse.chalmers.se'
 
 # Override ls with gls for dircolors
 alias l='eza -la --git --time-style relative --icons=auto --no-permissions --octal-permissions --group'
