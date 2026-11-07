@@ -65,7 +65,7 @@ alias xxl_stenders='mpv https://mcp-1.streampanel.nl:8020/bonanza_mp3'
 alias ideas='ssh -A -t alex@up.science.uu.nl ssh science-vs105'
 alias ideastest='ssh -A -t alex@up.science.uu.nl ssh science-vs106'
 alias wotan='ssh wotan.klarit.se'
-alias ds-labs='ssh dat710@ds-labs.cse.chalmers.se'
+alias ds-labs='ssh -A dat710@ds-labs.cse.chalmers.se'
 
 # Override ls with gls for dircolors
 alias l='eza -la --git --time-style relative --icons=auto --no-permissions --octal-permissions --group'
