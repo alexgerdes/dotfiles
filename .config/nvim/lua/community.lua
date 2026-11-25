@@ -16,8 +16,6 @@ return {
   { import = "astrocommunity.pack.haskell" },
   -- TeX
   { import = "astrocommunity.markdown-and-latex.vimtex" },
-  -- VsCode
-  { import = "astrocommunity.recipes.vscode" },
   -- OpenCode
   { import = "astrocommunity.ai.opencode-nvim" },
   -- Notifications and command-line UI

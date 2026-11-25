@@ -1,0 +1,21 @@
+// Place your key bindings in this file to override the defaults
+[
+// Toggle between terminal and editor focus
+{ "key": "ctrl+`", "command": "workbench.action.terminal.focus"},
+{
+  "key": "ctrl+`",
+  "command": "workbench.action.focusActiveEditorGroup",
+  "when": "terminalFocus"
+},
+{
+  "key": "shift+;",
+  "command": "vim.showQuickpickCmdLine",
+  "when": "inZenMode && vim.mode != 'Insert'"
+},
+// Live ripgrep + fzf search (user task "code-rg")
+{
+  "key": "cmd+shift+f",
+  "command": "workbench.action.tasks.runTask",
+  "args": "code-rg"
+}
+]

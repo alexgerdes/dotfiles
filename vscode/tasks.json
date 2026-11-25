@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // Live ripgrep + fzf search (code-rg from ~/.zshrc.local); Enter opens the match in this window
+      "label": "code-rg",
+      "type": "process",
+      "command": "/bin/zsh",
+      "args": ["-ic", "code-rg"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "close": true,
+        "echo": false,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}
